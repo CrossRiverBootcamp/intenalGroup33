@@ -1,17 +1,26 @@
 ﻿using NServiceBus;
+using System.Data.SqlClient;
+
 class Program
 {
-    public async Task Main()
+    public static async Task Main()
     {
         Console.Title="Subscriber.NSB";
         var endpointConfiguration = new EndpointConfiguration("Subscriber.NSB");
-        endpointConfiguration.UsePersistence<SqlPersistence>();
+        var persistence = endpointConfiguration.UsePersistence<SqlPersistence>();
+        persistence.ConnectionBuilder(
+        connectionBuilder: () =>
+        {
+            return new SqlConnection(@"Data Source=.;Initial Catalog=Weight;Integrated Security=True");
+        });
+        var dialect = persistence.SqlDialect<SqlDialect.MsSqlServer>();
+        dialect.Schema("dbo");
+        var transport = endpointConfiguration.UseTransport<RabbitMQTransport
+            >();
+        transport.ConnectionString("host=localhost");
+        transport.UseConventionalRoutingTopology(QueueType.Quorum);
         endpointConfiguration.EnableInstallers();
         endpointConfiguration.EnableOutbox();
-        var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-        transport.UseConventionalRoutingTopology(QueueType.Quorum);
-        transport.ConnectionString("host=localhost");
-
 
         var endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false); ;
         Console.WriteLine("Press Enter to exit.");

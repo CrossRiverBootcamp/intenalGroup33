@@ -2,7 +2,7 @@
 
 namespace Messages
 {
-    public class MeasureDataAdded
+    public class MeasureDataAdded : IEvent
     {
         public string MeasureId { get; set; }
         public int CardId { get; set; }

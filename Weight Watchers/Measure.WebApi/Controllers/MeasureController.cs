@@ -13,12 +13,12 @@ namespace Measure.WebApi.Controllers;
 [Route("api/[controller]")]
 public class MeasureController : Controller
 {
-    private readonly IMeasureService _measureService;
+    //private readonly IMeasureService _measureService;
     private readonly IMapper _mapper;
     private readonly IMessageSession _messageSession;
-    public MeasureController(IMeasureService measureService, IMapper mapper, IMessageSession messageSession)
+    public MeasureController(/*IMeasureService measureService,*/ IMapper mapper, IMessageSession messageSession)
     {
-        _measureService = measureService;
+        //_measureService = measureService;
         var config = new MapperConfiguration(cfg =>
         {
             cfg.AddProfile<MeasureMap>();

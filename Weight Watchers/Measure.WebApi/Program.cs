@@ -1,3 +1,7 @@
+using Measure.Data.Interfaces;
+using Measure.Data.Repositories;
+using Measure.Services.Interfaces;
+using Measure.Services.Services;
 using NServiceBus;
 using System.Data.SqlClient;
 
@@ -24,7 +28,9 @@ builder.Host.UseNServiceBus(hostBuilderContext =>
     return endpointConfiguration;
 });
 
-
+builder.Services.AddScoped<IMeasureRepository,MeasureRepository>();
+builder.Services.AddScoped<IMeasureService, MeasureService>();
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,11 +9,9 @@
 
   <ItemGroup>
     <PackageReference Include="NServiceBus" Version="7.7.4" />
-<<<<<<< HEAD
     <PackageReference Include="NServiceBus.Persistence.Sql" Version="6.5.1" />
-=======
->>>>>>> 75f7512631140e2809bba62c7f42d8c75035172d
     <PackageReference Include="NServiceBus.RabbitMQ" Version="7.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
   <ItemGroup>
