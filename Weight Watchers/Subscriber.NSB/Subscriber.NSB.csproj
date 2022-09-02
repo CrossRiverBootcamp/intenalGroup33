@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Messages\Messages.csproj" />
+    <ProjectReference Include="..\Subscriber.Services\Subscriber.Services.csproj" />
   </ItemGroup>
 
 </Project>

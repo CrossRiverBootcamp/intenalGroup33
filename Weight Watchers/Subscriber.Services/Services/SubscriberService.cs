@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Messages;
 using Subscriber.Data.Entities;
 using Subscriber.Data.Interfaces;
 using Subscriber.Services.Interfaces;
@@ -63,6 +64,10 @@ namespace Subscriber.Services.Services
             {
                 return null;
             }
+        }
+        public async Task<float> updateBMI(MeasureDataAdded measureData)
+        {
+            return 21;
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using Subscriber.Services.Models;
+﻿using Messages;
+using Subscriber.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace Subscriber.Services.Interfaces
     {
         Task<bool> AddSubscriberAndCard(float height, SubscriberModel suscriberModel);
         Task<int?> Login(string email, string password);
+        Task updateBMI(MeasureDataAdded measureData);
     }
 }
